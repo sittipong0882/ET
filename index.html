@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>วิทยาลัยเทคนิคเพชรบุรี - แผนกอิเล็กทรอนิกส์</title>
+    <link rel="icon" type="image/png" href="images.jfif"
     <style>
         * {
             margin: 0;
@@ -314,93 +315,6 @@
             opacity: 0.9;
         }
 
-        /* Contact Form */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #60a5fa;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid rgba(96, 165, 250, 0.3);
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            background: rgba(30, 41, 59, 0.5);
-            color: #e2e8f0;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #60a5fa;
-            background: rgba(30, 41, 59, 0.8);
-        }
-
-        .submit-button {
-            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
-            color: white;
-            padding: 1rem 3rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .submit-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.5);
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(96, 165, 250, 0.2);
-        }
-
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 15px;
-            text-decoration: none;
-            color: #e2e8f0;
-            transition: transform 0.3s;
-            border: 1px solid rgba(96, 165, 250, 0.2);
-        }
-
-        .contact-method:hover {
-            transform: translateX(10px);
-            border-color: rgba(96, 165, 250, 0.5);
-            background: rgba(15, 23, 42, 1);
-        }
-
-        .method-icon {
-            font-size: 2rem;
-        }
-
         /* Footer */
         footer {
             background: rgba(15, 23, 42, 0.98);
@@ -415,10 +329,6 @@
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
             }
             
             .nav-links {
@@ -443,7 +353,7 @@
                 <a href="#courses">หลักสูตร</a>
                 <a href="#gallery">ภาพกิจกรรม</a>
                 <a href="#contact">ติดต่อ</a>
-                <a href="#" class="cta-button">สมัครเรียน</a>
+                <!-- ลบปุ่ม "สมัครเรียน" ออกแล้ว -->
             </div>
         </div>
     </nav>
@@ -562,86 +472,8 @@
         </div>
     </section>
 
-    <section id="contact">
-        <h2>ติดต่อเรา</h2>
-        <p class="section-subtitle">สนใจสมัครเรียนหรือต้องการสอบถามข้อมูล ติดต่อเราได้ที่นี่</p>
-
-        <div class="contact-grid">
-            <div>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">ชื่อ-นามสกุล</label>
-                        <input type="text" id="name" placeholder="กรุณากรอกชื่อ-นามสกุล" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">อีเมล</label>
-                        <input type="email" id="email" placeholder="example@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">เบอร์โทรศัพท์</label>
-                        <input type="tel" id="phone" placeholder="08X-XXX-XXXX">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">หัวข้อที่สนใจ</label>
-                        <select id="subject">
-                            <option value="">เลือกหัวข้อ</option>
-                            <option value="admission">สมัครเรียน</option>
-                            <option value="visit">ขอเยี่ยมชมแผนก</option>
-                            <option value="info">สอบถามข้อมูลหลักสูตร</option>
-                            <option value="other">อื่นๆ</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">ข้อความ</label>
-                        <textarea id="message" rows="5" placeholder="กรุณากรอกข้อความของคุณ..." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">ส่งข้อความ</button>
-                </form>
-            </div>
-
-            <div class="contact-info">
-                <h3 style="color: #60a5fa; margin-bottom: 1.5rem;">ข้อมูลติดต่อ</h3>
-                
-                <a href="tel:032425071" class="contact-method">
-                    <span class="method-icon">📱</span>
-                    <div>
-                        <strong>โทรศัพท์</strong><br>
-                        <span>032-425-071</span>
-                    </div>
-                </a>
-
-                <a href="mailto:info@petch-tech.ac.th" class="contact-method">
-                    <span class="method-icon">📧</span>
-                    <div>
-                        <strong>อีเมล</strong><br>
-                        <span>info@petch-tech.ac.th</span>
-                    </div>
-                </a>
-
-                <div class="contact-method">
-                    <span class="method-icon">📍</span>
-                    <div>
-                        <strong>ที่อยู่</strong><br>
-                        <span>วิทยาลัยเทคนิคเพชรบุรี<br>
-                        อ.เมือง จ.เพชรบุรี 76000</span>
-                    </div>
-                </div>
-
-                <div class="contact-method">
-                    <span class="method-icon">⏰</span>
-                    <div>
-                        <strong>เวลาทำการ</strong><br>
-                        <span>จันทร์-ศุกร์ 8:00-16:30 น.</span>
-                    </div>
-                </div>
-
-                <div class="image-placeholder" style="margin-top: 2rem; font-size: 0.9rem;">
-                    📸 แนะนำ: ใส่แผนที่ Google Maps แสดงตำแหน่งวิทยาลัย
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- ลบส่วน "ติดต่อเรา" ทั้งหมดออก -->
+    
     <footer>
         <p><strong>วิทยาลัยเทคนิคเพชรบุรี - แผนกอิเล็กทรอนิกส์</strong></p>
         <p style="margin-top: 1rem; color: #666;">
@@ -653,14 +485,7 @@
     </footer>
 
     <script>
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('ขอบคุณสำหรับข้อความของคุณ! เราจะติดต่อกลับโดยเร็วที่สุด');
-            this.reset();
-        });
-
-        // Smooth scrolling
+        // Smooth scrolling (ลบส่วน form ออกแล้ว)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
