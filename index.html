@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>วิทยาลัยเทคนิคเพชรบุรี - แผนกอิเล็กทรอนิกส์</title>
+    <title>แผนกอิเล็กทรอนิกส์ | วิทยาลัยเทคนิคเพชรบุรี</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,10 +13,10 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            color: #1e293b;
-            overflow-x: hidden;
+            font-family: 'IBM Plex Mono', Consolas, monospace;
+            background: #0c1220;
+            color: #e2e8f0;
+            line-height: 1.6;
         }
 
         /* Animated Background */
@@ -31,49 +32,30 @@
 
         .shape {
             position: absolute;
-            background: rgba(59, 130, 246, 0.06);
-            border-radius: 50%;
-            animation: float 20s infinite ease-in-out;
+            background: rgba(13, 71, 161, 0.1);
+            border: 1px solid rgba(66, 165, 245, 0.3);
+            border-radius: 4px;
+            animation: pulse 12s infinite ease-in-out;
         }
 
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            left: 10%;
-            top: 20%;
-            animation-delay: 0s;
-        }
+        .shape:nth-child(1) { width: 70px; height: 70px; left: 10%; top: 20%; }
+        .shape:nth-child(2) { width: 110px; height: 110px; right: 15%; top: 40%; animation-delay: 3s; }
+        .shape:nth-child(3) { width: 90px; height: 90px; left: 50%; bottom: 30%; animation-delay: 5s; }
 
-        .shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            right: 15%;
-            top: 40%;
-            animation-delay: 2s;
-        }
-
-        .shape:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            left: 50%;
-            bottom: 30%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(180deg); }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); box-shadow: 0 0 15px rgba(33, 150, 243, 0.5); }
         }
 
         /* Navigation */
         nav {
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(12px);
+            background: rgba(10, 12, 18, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(59, 130, 246, 0.25);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.25);
+            box-shadow: 0 2px 15px rgba(0, 50, 120, 0.5);
+            border-bottom: 1px solid rgba(30, 90, 180, 0.4);
         }
 
         .nav-container {
@@ -88,271 +70,304 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #1d4ed8;
+            color: #64b5f6;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 1.8rem;
-            align-items: center;
+            gap: 1.5rem;
         }
 
         .nav-links a {
+            color: #cbd5e1;
             text-decoration: none;
-            color: #334155;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-weight: 500;
+            transition: all 0.3s;
             padding: 0.4rem 0.6rem;
-            border-radius: 8px;
+            border-radius: 6px;
         }
 
         .nav-links a:hover {
-            color: #1e40af;
-            background: rgba(239, 246, 255, 0.7);
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(66, 165, 245, 0.7);
         }
 
         .nav-links a.external {
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-            color: #1e40af !important;
-            border: 1px solid #93c5fd;
+            color: #90caf9 !important;
+            border: 1px solid rgba(100, 181, 246, 0.4);
+            background: rgba(22, 31, 50, 0.5);
         }
 
-        .nav-links a.external:hover {
-            background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
-            color: white !important;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: white !important;
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-weight: 600;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
-        }
-
-        /* Hero Section */
+        /* Hero Section — แก้ตรงนี้เพื่อให้รูปชัด + มีทรานซิชั่น */
         .hero {
             position: relative;
             text-align: center;
-            padding: 6rem 2rem;
-            color: white;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+            padding: 4rem 2rem;
             margin: 2rem auto;
-            max-width: 1200px;
-            border-radius: 30px;
-            box-shadow: 0 12px 35px rgba(30, 64, 175, 0.4);
+            max-width: 1000px;
         }
 
-        .hero-content {
+        .hero-bg {
             position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
+            width: 100%;
+            height: 380px;
+            background: url('images/hero-bg.jpg') center/cover no-repeat;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.2s backwards;
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* เพิ่ม opacity ให้มืดขึ้น — ทำให้ข้อความเห็นชัด */
+            background: linear-gradient(to bottom, rgba(0,5,20,0.95), rgba(10,20,40,0.98));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            /* เพิ่ม animation */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            color: #e3f2fd;
+            text-shadow: 0 0 8px rgba(255,255,255,0.4);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #90caf9;
+        }
+
+        .hero-motto {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #bbdefb;
+            margin: 1rem 0;
+            padding: 0.6rem 1.5rem;
+            background: rgba(30, 90, 180, 0.3);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #0d47a1, #1565c0);
+            color: white !important;
+            text-decoration: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid #2196f3;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(33, 150, 243, 0.4);
+        }
+
         /* Sections */
         section {
-            position: relative;
-            background: white;
+            background: #0f172a;
             margin: 2rem auto;
-            border-radius: 30px;
-            max-width: 1200px;
-            padding: 4rem 2rem;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.07);
-            border: 1px solid rgba(59, 130, 246, 0.12);
+            max-width: 1000px;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            border: 1px solid rgba(70,130,200,0.2);
         }
 
         h2 {
             text-align: center;
-            font-size: 2.5rem;
-            color: #1d4ed8;
+            font-size: 2.2rem;
+            color: #bbdefb;
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .section-subtitle {
             text-align: center;
-            color: #64748b;
-            margin-bottom: 3rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
             font-size: 1.1rem;
         }
 
-        .image-placeholder {
-            background: #f8fafc;
-            border: 3px dashed #93c5fd;
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
+        /* Image Box — แก้ตรงนี้เพื่อให้รูปอยู่ในกรอบชัด + ไม่บิด */
+        .image-box {
+            background: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
             margin: 2rem 0;
-            color: #3b82f6;
-            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            /* เพิ่ม border ให้ชัด */
+            border: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .image-box img {
+            width: 100%;
+            max-height: 400px; /* จำกัดความสูง */
+            height: auto;
+            display: block;
+            object-fit: cover; /* ป้องกันบิดเบี้ยว */
+            object-position: center;
+        }
+
+        .caption {
+            padding: 0.8rem;
+            background: #1a2235;
+            font-size: 0.95rem;
+            color: #94a3b8;
+            text-align: center;
         }
 
         /* Features Grid */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
         }
 
         .feature-card {
-            background: #f8fafc;
-            padding: 2rem;
-            border-radius: 20px;
+            background: #1e293b;
+            padding: 1.8rem;
+            border-radius: 16px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #dbeafe;
+            border: 1px solid #334155;
+            transition: transform 0.3s;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 25px rgba(59, 130, 246, 0.25);
-            border-color: #93c5fd;
+            transform: translateY(-6px);
+            border-color: #2196f3;
         }
 
         .feature-icon {
-            font-size: 3rem;
+            font-size: 2.8rem;
             margin-bottom: 1rem;
-            color: #3b82f6;
+            color: #4fc3f7;
         }
 
         .feature-card h3 {
-            color: #1d4ed8;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            color: #e3f2fd;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
         }
 
         .feature-card p {
-            color: #475569;
-            line-height: 1.6;
+            color: #cbd5e1;
+            font-size: 0.95rem;
         }
 
         /* Stats */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .stat-card {
             text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-            color: #1e3a8a;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.15);
+            padding: 1.5rem;
+            background: rgba(30, 60, 110, 0.3);
+            color: #e3f2fd;
+            border-radius: 16px;
+            border: 1px solid rgba(100, 160, 255, 0.2);
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.6rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #1d4ed8;
+            margin-bottom: 0.3rem;
+            color: #64b5f6;
         }
 
         .stat-label {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            color: #90caf9;
         }
 
         /* Courses */
         .course-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1.8rem;
+            margin-top: 2rem;
         }
 
         .course-card {
-            background: white;
-            border-radius: 20px;
+            background: #1e293b;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #334155;
         }
 
-        .course-card:hover {
-            transform: translateY(-5px);
-            border-color: #93c5fd;
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.12);
-        }
-
-        .course-image {
-            height: 200px;
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .course-header {
+            background: linear-gradient(135deg, #0d47a1, #1565c0);
+            padding: 1.2rem;
+            text-align: center;
             color: white;
-            font-size: 4rem;
+        }
+
+        .course-header h3 {
+            margin: 0;
+            font-size: 1.4rem;
         }
 
         .course-content {
-            padding: 1.5rem;
+            padding: 1.4rem;
+            color: #cbd5e1;
         }
 
-        .course-card h3 {
-            color: #1d4ed8;
-            margin-bottom: 0.5rem;
+        /* Contact */
+        .contact-info {
+            max-width: 600px;
+            margin: 2rem auto;
+            text-align: left;
+            line-height: 1.8;
         }
 
-        .course-card p {
-            color: #475569;
-            line-height: 1.6;
+        .contact-info p {
+            margin: 0.6rem 0;
         }
 
         /* Footer */
         footer {
-            background: #f1f5f9;
-            color: #334155;
+            background: #0a0f1a;
+            color: #94a3b8;
             text-align: center;
             padding: 2rem;
             margin-top: 2rem;
-            border-top: 1px solid #cbd5e1;
+            border-top: 1px solid rgba(100, 150, 255, 0.1);
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .nav-links {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
+            .hero h1 { font-size: 2rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .nav-links { flex-direction: column; gap: 0.8rem; }
+            section { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
@@ -365,12 +380,13 @@
 
     <nav>
         <div class="nav-container">
-            <div class="logo">🎓 วิทยาลัยเทคนิคเพชรบุรี</div>
+            <a href="https://pbtechhomepagev1.vercel.app/" class="logo" target="_blank">
+                🏫 วิทยาลัยเทคนิคเพชรบุรี
+                <span style="font-size: 1.1rem; color: #90caf9;">→</span>
+            </a>
             <div class="nav-links">
-                <!-- เพิ่ม "หน้าหลัก" และ "เทคคอม" -->
-                <a href="#hero" class="external">หน้าหลัก</a>
-                <a href="https://www.facebook.com/groups/your-techcom-group" target="_blank" class="external">เทคคอม</a>
-                <!-- เมนูอื่นๆ -->
+                <a href="https://pbtechhomepagev1.vercel.app/" class="external" target="_blank">หน้าหลัก</a>
+                <a href="https://computertechnology.vercel.app/" class="external" target="_blank">เทคนิคคอมพิวเตอร์</a>
                 <a href="#about">เกี่ยวกับแผนก</a>
                 <a href="#courses">หลักสูตร</a>
                 <a href="#gallery">ภาพกิจกรรม</a>
@@ -380,47 +396,46 @@
     </nav>
 
     <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1>แผนกอิเล็กทรอนิกส์</h1>
-            <p class="hero-subtitle">วิทยาลัยเทคนิคเพชรบุรี</p>
-            <p class="hero-subtitle" style="font-size: 1.5rem; margin-top: 1rem;">
-                ความรู้ดี มีฝีมือ ถือคุณธรรม สัมพันธ์ชุมชน
-            </p>
-            <div class="image-placeholder">
-                📸 แนะนำ: ใส่รูปภาพอาคารวิทยาลัย หรือป้ายชื่อแผนกอิเล็กทรอนิกส์
+        <div class="hero-bg">
+            <div class="hero-overlay">
+                <h1>แผนกอิเล็กทรอนิกส์</h1>
+                <p class="hero-subtitle">วิทยาลัยเทคนิคเพชรบุรี</p>
+                <p class="hero-motto">ความรู้ดี มีฝีมือ ถือคุณธรรม สัมพันธ์ชุมชน</p>
+                <a href="#courses" class="cta-button">ดูหลักสูตรทั้งหมด</a>
             </div>
-            <a href="#courses" class="cta-button" style="font-size: 1.1rem; padding: 0.75rem 2rem;">เรียนรู้เพิ่มเติม</a>
         </div>
     </section>
 
     <section id="about">
-        <h2>เกี่ยวกับแผนกอิเล็กทรอนิกส์</h2>
-        <p class="section-subtitle">พัฒนาทักษะด้านอิเล็กทรอนิกส์และเทคโนโลยีสมัยใหม่</p>
-        
-        <div class="image-placeholder">
-            📸 แนะนำ: ใส่รูปภาพห้องปฏิบัติการอิเล็กทรอนิกส์ หรือนักเรียนกำลังเรียนรู้
+        <h2>ประวัติความเป็นมา</h2>
+        <p class="section-subtitle">พัฒนาบุคลากรด้านอิเล็กทรอนิกส์ที่มีทักษะตรงตามความต้องการของอุตสาหกรรม</p>
+
+        <div class="image-box">
+            <img src="images/department-sign.jpg" alt="ป้ายแผนกอิเล็กทรอนิกส์">
+            <div class="caption">ป้ายแผนกวิชาช่างอิเล็กทรอนิกส์ วิทยาลัยเทคนิคเพชรบุรี</div>
         </div>
+
+        <p style="text-align: left; margin: 1.5rem 0; line-height: 1.7;">
+            แผนกอิเล็กทรอนิกส์ เปิดสอนตามหลักสูตรของสำนักงานคณะกรรมการการอาชีวศึกษา (สอศ.)<br>
+            ระดับ ปวช. สาขางาน <strong>อิเล็กทรอนิกส์ (ปกติ)</strong> และ ระดับ ปวส. สาขางาน <strong>อิเล็กอุตสาหกรรม (ปกติ)</strong><br>
+            มุ่งเน้นการเรียนรู้แบบ <em>Learning by Doing</em> ผ่านการปฏิบัติจริงในห้องปฏิบัติการที่ทันสมัย และการฝึกงานกับสถานประกอบการ
+        </p>
 
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
                 <h3>เรียนรู้จริง ปฏิบัติจริง</h3>
-                <p>ห้องปฏิบัติการที่ทันสมัย พร้อมอุปกรณ์ครบครันสำหรับการเรียนรู้</p>
+                <p>ห้องปฏิบัติการอุปกรณ์ครบครัน: ออสซิลโลสโคป, มัลติมิเตอร์, แหล่งจ่ายไฟ, และแผงวงจรฝึก</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🔧</div>
+                <div class="feature-icon">👨‍🏫</div>
                 <h3>อาจารย์ผู้เชี่ยวชาญ</h3>
-                <p>ทีมงานอาจารย์ที่มีประสบการณ์และความเชี่ยวชาญในสายงาน</p>
+                <p>ทีมอาจารย์มีประสบการณ์ทั้งด้านวิชาการและอุตสาหกรรม พร้อมถ่ายทอดความรู้แบบตัวต่อตัว</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🏆</div>
-                <h3>ความสำเร็จของนักเรียน</h3>
-                <p>นักเรียนของเราสามารถทำงานได้จริงและได้รับรางวัลมากมาย</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💼</div>
-                <h3>พร้อมทำงาน</h3>
-                <p>เน้นการฝึกงานจริงกับสถานประกอบการชั้นนำ</p>
+                <div class="feature-icon">🏭</div>
+                <h3>ความร่วมมือกับสถานประกอบการ</h3>
+                <p>มีบริษัทพันธมิตร 50+ แห่ง ร่วมฝึกงานและจ้างงานนักเรียนหลังสำเร็จการศึกษา</p>
             </div>
         </div>
 
@@ -431,49 +446,52 @@
             </div>
             <div class="stat-card">
                 <div class="stat-number">500+</div>
-                <div class="stat-label">นักเรียนที่จบการศึกษา</div>
+                <div class="stat-label">นักเรียนที่สำเร็จการศึกษา</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">95%</div>
-                <div class="stat-label">อัตราการมีงานทำ</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">บริษัทพันธมิตร</div>
+                <div class="stat-label">อัตราการได้งาน</div>
             </div>
         </div>
     </section>
 
     <section id="courses">
-        <h2>หลักสูตรที่เปิดสอน</h2>
-        <p class="section-subtitle">เลือกเส้นทางสายอาชีพที่ใช่สำหรับคุณ</p>
+        <h2>หลักสูตรและทักษะ</h2>
+        <p class="section-subtitle">ตามหลักสูตรประกาศนียบัตรวิชาชีพ (ปวช.) และ (ปวส.) พ.ศ. 2562–2563 ของ สอศ.</p>
 
         <div class="course-grid">
             <div class="course-card">
-                <div class="course-image">🔌</div>
+                <div class="course-header">
+                    <h3>ปวช. อิเล็กทรอนิกส์ (ปกติ)</h3>
+                </div>
                 <div class="course-content">
-                    <h3>ปวช. อิเล็กทรอนิกส์</h3>
-                    <p>เรียนรู้พื้นฐานทางอิเล็กทรอนิกส์ การซ่อมบำรุง และการประกอบวงจร ระยะเวลา 3 ปี</p>
+                    <p>ระยะเวลา 3 ปี | สำหรับผู้จบ ม.3<br>
+                    เรียนรู้: วงจรไฟฟ้าพื้นฐาน, การวัดค่า, การซ่อมอุปกรณ์อิเล็กทรอนิกส์, การประกอบวงจร</p>
                 </div>
             </div>
             <div class="course-card">
-                <div class="course-image">💻</div>
+                <div class="course-header">
+                    <h3>ปวส. อิเล็กอุตสาหกรรม (ปกติ)</h3>
+                </div>
                 <div class="course-content">
-                    <h3>ปวส. อิเล็กทรอนิกส์</h3>
-                    <p>เรียนรู้เชิงลึกด้านระบบควบคุม ไมโครคอนโทรลเลอร์ และ IoT ระยะเวลา 2 ปี</p>
+                    <p>ระยะเวลา 2 ปี | สำหรับผู้จบ ปวช. อิเล็กฯ<br>
+                    เรียนรู้: PLC, Microcontroller, IoT, ระบบควบคุมอัตโนมัติ, หุ่นยนต์</p>
                 </div>
             </div>
-            <div class="course-card">
-                <div class="course-image">🤖</div>
+            <div class=" course-card ">
+                <div class="course-header">
+                    <h3>โครงการทวิภาคี</h3>
+                </div>
                 <div class="course-content">
-                    <h3>หลักสูตรระยะสั้น</h3>
-                    <p>หลักสูตรเสริมทักษะ เช่น Arduino, PLC, และการเขียนโปรแกรม</p>
+                    <p>เรียนร่วมกับสถานประกอบการ<br>
+                    ฝึกงาน 2 วัน/สัปดาห์ ได้รับทุนและโอกาสจ้างงานหลังจบ</p>
                 </div>
             </div>
         </div>
 
-        <div class="image-placeholder" style="margin-top: 3rem;">
-            📸 แนะนำ: ใส่รูปภาพผลงานนักเรียน โปรเจคต์ หรือการแข่งขันต่างๆ
+        <div class="image-box" style="margin-top: 2.5rem;">
+            <img src="images/lab-electronics.jpg" alt="ห้องปฏิบัติการอิเล็กทรอนิกส์">
+            <div class="caption">ห้องปฏิบัติการอิเล็กทรอนิกส์ พร้อมอุปกรณ์ทันสมัย</div>
         </div>
     </section>
 
@@ -481,21 +499,33 @@
         <h2>ภาพกิจกรรมและผลงาน</h2>
         <p class="section-subtitle">ชีวิตนักเรียนและความภาคภูมิใจของเรา</p>
 
-        <div class="image-placeholder">
-            📸 แนะนำ: ใส่แกลเลอรี่รูปภาพกิจกรรมต่างๆ เช่น
-            <br><br>
-            • รูปนักเรียนกำลังปฏิบัติการในห้องแล็บ<br>
-            • รูปการแข่งขันทักษะวิชาชีพ<br>
-            • รูปกิจกรรมแลกเปลี่ยนเรียนรู้<br>
-            • รูปผลงานโปรเจคต์ของนักเรียน<br>
-            • รูปการฝึกงานในสถานประกอบการ<br>
-            • รูปพิธีมอบประกาศนียบัตร
+        <div class="image-box" style="height: auto;">
+            <img src="images/students-group.jpg" alt="นักเรียนแผนกอิเล็กทรอนิกส์">
+            <div class="caption">นักเรียนแผนกอิเล็กทรอนิกส์ กำลังปฏิบัติการในห้องแล็บ</div>
+        </div>
+
+        <div class="image-box" style="margin-top: 1.5rem; height: auto;">
+            <img src="images/activity.jpg" alt="กิจกรรมนักเรียน">
+            <div class="caption">การแข่งขันทักษะวิชาชีพ สอศ. และบริการชุมชน</div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>ติดต่อแผนกอิเล็กทรอนิกส์</h2>
+        <p class="section-subtitle">สอบถามข้อมูลเพิ่มเติมได้ที่</p>
+
+        <div class="contact-info">
+            <p><strong>📍 ที่อยู่:</strong> แผนกอิเล็กทรอนิกส์ วิทยาลัยเทคนิคเพชรบุรี  
+            123 ถนนบริพัตร ตำบลท่าราบ อำเภอเมือง จังหวัดเพชรบุรี 76000</p>
+            <p><strong>📞 โทรศัพท์:</strong> 0-3242-5432 ต่อ XXX</p>
+            <p><strong>✉️ อีเมล:</strong> electronics@pbtech.ac.th</p>
+            <p><strong>🕒 วันเวลาราชการ:</strong> จันทร์–ศุกร์ เวลา 08:30–16:30 น.</p>
         </div>
     </section>
 
     <footer>
         <p><strong>วิทยาลัยเทคนิคเพชรบุรี - แผนกอิเล็กทรอนิกส์</strong></p>
-        <p style="margin-top: 1rem; color: #475569;">
+        <p style="margin-top: 1rem; color: #94a3b8;">
             ความรู้ดี มีฝีมือ ถือคุณธรรม สัมพันธ์ชุมชน
         </p>
         <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;">
