@@ -102,74 +102,148 @@
             background: rgba(22, 31, 50, 0.5);
         }
 
-        /* Hero Section — แก้ตรงนี้เพื่อให้รูปชัด + มีทรานซิชั่น */
-        .hero {
-            position: relative;
-            text-align: center;
-            padding: 4rem 2rem;
-            margin: 2rem auto;
-            max-width: 1000px;
-        }
+        /* Hero Section — แก้ตรงนี้เพื่อให้รูปเป็นพื้นหลังของข้อความ + มี slide วนรูป */
+        /* Hero Section — รูปเล่นวนข้างหลังข้อความ + ตัวอักษรแบบเดิม */
+/* Hero Section — รูปเต็มขอบ + ตัวอักษรชัด + เห็นภาพข้างหลัง */
+/* Hero Section — รูปเต็มขอบ + ตัวอักษรเด่นสุด */
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 4rem 2rem;
+    margin: 2rem auto;
+    max-width: 1000px;
+}
 
-        .hero-bg {
-            position: relative;
-            width: 100%;
-            height: 380px;
-            background: url('images/hero-bg.jpg') center/cover no-repeat;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            overflow: hidden;
-        }
+.hero-bg {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    overflow: hidden;
+    background: #0a192f;
+}
 
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            /* เพิ่ม opacity ให้มืดขึ้น — ทำให้ข้อความเห็นชัด */
-            background: linear-gradient(to bottom, rgba(0,5,20,0.95), rgba(10,20,40,0.98));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            text-align: center;
-            color: white;
-            /* เพิ่ม animation */
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards;
-        }
+/* สไลด์รูป — เต็มขอบ 100% */
+.hero-slides {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    overflow: hidden;
+}
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.hero-slides img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ขยายให้เต็ม + ตัดส่วนเกิน */
+    object-position: center;
+    opacity: 0;
+    animation: slide 20s infinite;
+}
 
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            color: #e3f2fd;
-            text-shadow: 0 0 8px rgba(255,255,255,0.4);
-        }
+.hero-slides img:nth-child(1) { animation-delay: 0s; }
+.hero-slides img:nth-child(2) { animation-delay: 4s; }
+.hero-slides img:nth-child(3) { animation-delay: 8s; }
+.hero-slides img:nth-child(4) { animation-delay: 12s; }
+.hero-slides img:nth-child(5) { animation-delay: 16s; }
 
-        .hero-subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: #90caf9;
-        }
+@keyframes slide {
+    0% { opacity: 0; }
+    12% { opacity: 1; }
+    24% { opacity: 1; }
+    36% { opacity: 0; }
+    100% { opacity: 0; }
+}
 
-        .hero-motto {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: #bbdefb;
-            margin: 1rem 0;
-            padding: 0.6rem 1.5rem;
-            background: rgba(30, 90, 180, 0.3);
-            border-radius: 8px;
-            display: inline-block;
-        }
+/* ข้อความ — เด่นชัดสุด ใช้สไตล์เว็บราชการ */
+.hero-text {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    /* เพิ่ม semi-transparent dark overlay แบบบาง ๆ เพื่อให้อ่านง่ายยิ่งขึ้น */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.75));
+    border-radius: 20px;
+}
 
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.8rem;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    /* เด่นสุด — outline + glow + drop shadow */
+    text-shadow:
+        /* outline ดำหนา */
+        -2px -2px 0 #000,
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000,
+        /* glow น้ำเงิน */
+         0 0 12px rgba(59, 130, 246, 0.6),
+        /* drop shadow */
+         0 4px 8px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #e0f2fe;
+    font-weight: 600;
+    text-shadow:
+        0 1px 2px rgba(0,0,0,0.6),
+        0 0 6px rgba(255,255,255,0.4);
+}
+
+.hero-motto {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #bbdefb;
+    margin: 1rem 0;
+    padding: 0.7rem 2rem;
+    background: rgba(13, 74, 126, 0.6);
+    border-left: 4px solid #64b5f6;
+    border-radius: 0 8px 8px 0;
+    display: inline-block;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #0d47a1, #1565c0);
+    color: white !important;
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    margin-top: 1rem;
+    border: 2px solid #2196f3;
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 6px 15px rgba(33, 150, 243, 0.5),
+        0 0 20px rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, #1565c0, #1976d2);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
         .cta-button {
             display: inline-block;
             background: linear-gradient(135deg, #0d47a1, #1565c0);
@@ -220,7 +294,6 @@
             overflow: hidden;
             margin: 2rem 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            /* เพิ่ม border ให้ชัด */
             border: 2px solid rgba(59, 130, 246, 0.3);
         }
 
@@ -380,13 +453,13 @@
 
     <nav>
         <div class="nav-container">
-            <a href="https://pbtechhomepagev1.vercel.app/" class="logo" target="_blank">
+            <a href="https://pbtechhomepagev1.vercel.app/" class="logo" target="_self">
                 🏫 วิทยาลัยเทคนิคเพชรบุรี
                 <span style="font-size: 1.1rem; color: #90caf9;">→</span>
             </a>
             <div class="nav-links">
-                <a href="https://pbtechhomepagev1.vercel.app/" class="external" target="_blank">หน้าหลัก</a>
-                <a href="https://computertechnology.vercel.app/" class="external" target="_blank">เทคนิคคอมพิวเตอร์</a>
+                <a href="https://pbtechhomepagev1.vercel.app/" class="external" target="_self">หน้าหลัก</a>
+                <a href="https://computertechnology.vercel.app/" class="external" target="_self">เทคนิคคอมพิวเตอร์</a>
                 <a href="#about">เกี่ยวกับแผนก</a>
                 <a href="#courses">หลักสูตร</a>
                 <a href="#gallery">ภาพกิจกรรม</a>
@@ -397,7 +470,17 @@
 
     <section class="hero" id="hero">
         <div class="hero-bg">
-            <div class="hero-overlay">
+            <!-- รูปสไลด์วนข้างหลังข้อความ -->
+            <div class="hero-slides">
+                <img src="images/22047.jpg" alt="ภาพ 1">
+                <img src="images/activity.jpg" alt="ภาพ 2">
+                <img src="images/ttt.jpg" alt="ภาพ 3">
+                <img src="images/students-group.jpg" alt="ภาพ 4">
+                <img src="images/lab-electronics.jpg" alt="ภาพ 5">
+            </div>
+    
+            <!-- ข้อความ — ใช้แบบเดิม ไม่เปลี่ยน font, สี, เงา -->
+            <div class="hero-text">
                 <h1>แผนกอิเล็กทรอนิกส์</h1>
                 <p class="hero-subtitle">วิทยาลัยเทคนิคเพชรบุรี</p>
                 <p class="hero-motto">ความรู้ดี มีฝีมือ ถือคุณธรรม สัมพันธ์ชุมชน</p>
@@ -410,8 +493,12 @@
         <h2>ประวัติความเป็นมา</h2>
         <p class="section-subtitle">พัฒนาบุคลากรด้านอิเล็กทรอนิกส์ที่มีทักษะตรงตามความต้องการของอุตสาหกรรม</p>
 
-        <div class="image-box">
-            <img src="images/department-sign.jpg" alt="ป้ายแผนกอิเล็กทรอนิกส์">
+        <div class="image-box" style="border-radius: 16px; overflow: hidden; margin: 2rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2); border: 2px solid rgba(59,130,246,0.3);">
+            <div style="width: 100%; height: 200px; overflow: hidden; background: #1e293b;">
+                <img src="images/ET.jpg" 
+                     alt="ป้ายแผนกวิชาช่างอิเล็กทรอนิกส์"
+                     style="width: auto; height: 100%; min-width: 100%; object-fit: cover; object-position: center;">
+            </div>
             <div class="caption">ป้ายแผนกวิชาช่างอิเล็กทรอนิกส์ วิทยาลัยเทคนิคเพชรบุรี</div>
         </div>
 
@@ -478,9 +565,9 @@
                     เรียนรู้: PLC, Microcontroller, IoT, ระบบควบคุมอัตโนมัติ, หุ่นยนต์</p>
                 </div>
             </div>
-            <div class=" course-card ">
+            <div class="course-card">
                 <div class="course-header">
-                    <h3>โครงการทวิภาคี</h3>
+                        <h3>โครงการทวิภาคี</h3>
                 </div>
                 <div class="course-content">
                     <p>เรียนร่วมกับสถานประกอบการ<br>
@@ -488,27 +575,152 @@
                 </div>
             </div>
         </div>
+        <section id="teachers">
+            <h2>อาจารย์ประจำแผนกอิเล็กทรอนิกส์</h2>
+            <p class="section-subtitle"></p>
+        
+            <!-- กรอบใหญ่ -->
+            <div style="background: #1e293b; border-radius: 20px; padding: 2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.4); margin: 2rem auto; max-width: 800px;">
+                <!-- แถวบน: 3 รูป -->
+                <div style="display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2rem;">
+                    <div style="text-align: center; flex: 1; min-width: 180px;">
+                        <img src="images/unnamed (6).jpg" alt="นางสาวปรียาวรรณ ฉายอรุณ" style="width: 100%; max-width: 160px; height: auto; border-radius: 8px; object-fit: cover; object-position: center;">
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #90caf9;">นางสาวปรียาวรรณ ฉายอรุณ</p>
+                    </div>
+                    <div style="text-align: center; flex: 1; min-width: 180px;">
+                        <img src="images/unnamed (5).jpg" alt="นายนาวิน หอมกลิ่น" style="width: 100%; max-width: 160px; height: auto; border-radius: 8px; object-fit: cover; object-position: center;">
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #90caf9;">นายนาวิน หอมกลิ่น</p>
+                    </div>
+                    <div style="text-align: center; flex: 1; min-width: 180px;">
+                        <img src="images/unnamed (4).jpg" alt="นายนํ้ามนตร์ จันมณี" style="width: 100%; max-width: 160px; height: auto; border-radius: 8px; object-fit: cover; object-position: center;">
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #90caf9;">นายนํ้ามนตร์ จันมณี</p>
+                    </div>
+                </div>
+        
+                <!-- แถวล่าง: 1 รูป -->
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <img src="images/unnamed (3).jpg" alt="นายณัฐกิตติ์ สิงห์แก้วอภิวุฒิ" style="width: 100%; max-width: 160px; height: auto; border-radius: 8px; object-fit: cover; object-position: center;">
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #90caf9;">นายณัฐกิตติ์ สิงห์แก้วอภิวุฒิ</p>
+                </div>
+        
+                <!-- แถวล่าง: 3 รูป -->
+                <div style="display: flex; justify-content: space-between; gap: 1rem;">
+                    <div style="text-align: center; flex: 1; min-width: 180px;">
+                        <img src="images/unnamed (2).jpg" alt="นายสายัณห์ ทันสมัย" style="width: 100%; max-width: 160px; height: auto; border-radius: 8px; object-fit: cover; object-position: center;">
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #90caf9;">นายสายัณห์ ทันสมัย</p>
+                    </div>
+                    <div style="text-align: center; flex: 1; min-width: 180px;">
+                        <img src="images/unnamed (1).jpg" alt="นายกรณ์ ศิริรัตน์" style="width: 100%; max-width: 160px; height: auto; border-radius: 8px; object-fit: cover; object-position: center;">
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #90caf9;">นายกรณ์ ศิริรัตน์</p>
+                    </div>
+                    <div style="text-align: center; flex: 1; min-width: 180px;">
+                        <img src="images/unnamed.jpg" alt="นายกิตติ หอมลำดวน" style="width: 100%; max-width: 160px; height: auto; border-radius: 8px; object-fit: cover; object-position: center;">
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #90caf9;">นายกิตติ หอมลำดวน</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="image-box" style="margin-top: 2.5rem;">
-            <img src="images/lab-electronics.jpg" alt="ห้องปฏิบัติการอิเล็กทรอนิกส์">
-            <div class="caption">ห้องปฏิบัติการอิเล็กทรอนิกส์ พร้อมอุปกรณ์ทันสมัย</div>
-        </div>
+
+       
+
+        
     </section>
 
     <section id="gallery">
         <h2>ภาพกิจกรรมและผลงาน</h2>
         <p class="section-subtitle">ชีวิตนักเรียนและความภาคภูมิใจของเรา</p>
-
-        <div class="image-box" style="height: auto;">
-            <img src="images/students-group.jpg" alt="นักเรียนแผนกอิเล็กทรอนิกส์">
-            <div class="caption">นักเรียนแผนกอิเล็กทรอนิกส์ กำลังปฏิบัติการในห้องแล็บ</div>
-        </div>
-
-        <div class="image-box" style="margin-top: 1.5rem; height: auto;">
-            <img src="images/activity.jpg" alt="กิจกรรมนักเรียน">
-            <div class="caption">การแข่งขันทักษะวิชาชีพ สอศ. และบริการชุมชน</div>
+    
+        <!-- กรอบใหญ่ -->
+        <div style="background: #1e293b; border-radius: 20px; padding: 2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.4); margin: 2rem auto; max-width: 800px;">
+            <!-- หัวข้อ -->
+            <h3 style="text-align: center; color: #bbdefb; font-size: 1.6rem; margin-bottom: 1.5rem;">ภาพกิจกรรมและผลงาน</h3>
+    
+            <!-- สไลด์รูป 7 ภาพ -->
+            <div style="position: relative; width: 100%; height: 400px; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                <div id="gallery-slides" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; transition: transform 1s ease-in-out;">
+                    <!-- รูปที่ 1 -->
+                    <div style="width: 100%; height: 100%; flex-shrink: 0; position: relative;">
+                        <img src="images/G1.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 1rem; color: white; text-align: center; font-size: 0.9rem;">
+                            
+                        </div>
+                    </div>
+                    <!-- รูปที่ 2 -->
+                    <div style="width: 100%; height: 100%; flex-shrink: 0; position: relative;">
+                        <img src="images/g2.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 1rem; color: white; text-align: center; font-size: 0.9rem;">
+                            
+                        </div>
+                    </div>
+                    <!-- รูปที่ 3 -->
+                    <div style="width: 100%; height: 100%; flex-shrink: 0; position: relative;">
+                        <img src="images/g3.jpg" alt="ภาพกิจกรรม 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 1rem; color: white; text-align: center; font-size: 0.9rem;">
+                            
+                        </div>
+                    </div>
+                    <!-- รูปที่ 4 -->
+                    <div style="width: 100%; height: 100%; flex-shrink: 0; position: relative;">
+                        <img src="images/g4.jpg" alt="ภาพกิจกรรม 4" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 1rem; color: white; text-align: center; font-size: 0.9rem;">
+                            
+                        </div>
+                    </div>
+                    <!-- รูปที่ 5 -->
+                    <div style="width: 100%; height: 100%; flex-shrink: 0; position: relative;">
+                        <img src="images/g5.jpg" alt="ภาพกิจกรรม 5" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 1rem; color: white; text-align: center; font-size: 0.9rem;">
+                            
+                        </div>
+                    </div>
+                    <!-- รูปที่ 6 -->
+                    <div style="width: 100%; height: 100%; flex-shrink: 0; position: relative;">
+                        <img src="images/g6.jpg" alt="ภาพกิจกรรม 6" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 1rem; color: white; text-align: center; font-size: 0.9rem;">
+                            
+                        </div>
+                    </div>
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- ปุ่มควบคุม -->
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <button onclick="prevSlide()" style="background: #1e293b; color: white; border: 1px solid #334155; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; margin: 0 0.5rem;">← ย้อนกลับ</button>
+                <button onclick="nextSlide()" style="background: #1e293b; color: white; border: 1px solid #334155; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; margin: 0 0.5rem;">ถัดไป →</button>
+            </div>
         </div>
     </section>
+    
+    <!-- JavaScript สำหรับ slide รูป -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.getElementById('gallery-slides');
+        const totalSlides = slides.children.length;
+    
+        function showSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            slides.style.transform = `translateX(-${index * 100}%)`;
+            currentSlide = index;
+        }
+    
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+    
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+    
+        // สร้าง animation แบบเล่นวนอัตโนมัติ
+        setInterval(() => {
+            nextSlide();
+        }, 5000); // เปลี่ยนรูปทุก 5 วินาที
+    </script>
 
     <section id="contact">
         <h2>ติดต่อแผนกอิเล็กทรอนิกส์</h2>
@@ -517,7 +729,7 @@
         <div class="contact-info">
             <p><strong>📍 ที่อยู่:</strong> แผนกอิเล็กทรอนิกส์ วิทยาลัยเทคนิคเพชรบุรี  
             123 ถนนบริพัตร ตำบลท่าราบ อำเภอเมือง จังหวัดเพชรบุรี 76000</p>
-            <p><strong>📞 โทรศัพท์:</strong> 0-3242-5432 ต่อ XXX</p>
+            <p><strong>📞 โทรศัพท์:</strong> 0-3242-5432 </p>
             <p><strong>✉️ อีเมล:</strong> electronics@pbtech.ac.th</p>
             <p><strong>🕒 วันเวลาราชการ:</strong> จันทร์–ศุกร์ เวลา 08:30–16:30 น.</p>
         </div>
